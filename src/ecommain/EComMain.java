@@ -53,6 +53,8 @@ class EComMain {
                 while(vEnum.hasMoreElements())
                     System.out.println(vEnum.nextElement());
                 break;
+            case 0:
+                break;
             default:
                 System.out.println("Invalid Option!");
             }
