@@ -6,28 +6,31 @@
 
 package ecommain;
 import java.util.*;
+import java.io.*;
 /**
  *
  * @author Pranit Raje
  */
-public class EComMain {
+class EComMain {
 
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
      * @throws java.lang.Exception
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        Scanner in=new Scanner(System.in);
+        DataInputStream in = new DataInputStream(System.in);
         Vector pro=new Vector();
         String name=new String();
-        System.out.println("\n1.add\n2.find\n3.list\n0.Exit");
-        int ch = in.nextInt();
+        int ch;
+        try {
         do {
+        System.out.println("\n1.add\n2.find\n3.list\n0.Exit");
+        ch = Integer.parseInt(in.readLine());
         switch(ch) {
             case 1: 
-                 name = in.nextLine();
+                 name = in.readLine();
                  name = name.toLowerCase();
                  if (pro.contains(name) || name.length()>30) {
                      break; //To check for the duplicate and length before adding the product 
@@ -36,7 +39,7 @@ public class EComMain {
                  break;
             case 2: 
                 int count=0;
-                String search = in.nextLine();
+                String search = in.readLine();
                 search = search.toLowerCase();
                 for (int i=0; i< pro.size(); i++ ) {
                     if(pro.contains(search)) {
@@ -54,5 +57,9 @@ public class EComMain {
                 System.out.println("Invalid Option!");
             }
         }while(ch!=0);
+        }
+        catch (IOException | NumberFormatException e) {
+            System.out.println("Error!");
+        }
     }  
 }
