@@ -21,7 +21,7 @@ class EComMain {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         DataInputStream in = new DataInputStream(System.in);
-        Vector pro=new Vector();
+        Vector<String> pro=new Vector<String>();
         String name=new String();
         int ch;
         try {
@@ -41,9 +41,11 @@ class EComMain {
                 int count=0;
                 String search = in.readLine();
                 search = search.toLowerCase();
-                for (int i=0; i< pro.size(); i++ ) {
-                    if(pro.contains(search)) {
-                    count++;
+                String [] arr = pro.toArray(new String[pro.size()]);
+                for (int i=0; i< arr.length; i++ ) {
+                    if(arr[i].contains(search)) {
+                        count++;
+                    } else {
                     }
                 }
                 System.out.println(count);
